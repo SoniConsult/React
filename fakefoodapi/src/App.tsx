@@ -1,8 +1,11 @@
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home.jsx";
-import Get from "./components/Get.jsx";
-import Post from "./components/Post.jsx";
-import Delete from "./components/Delete.jsx";
+import Home from "./components/Home.js";
+import Get from "./components/Get.js";
+import Post from "./components/Post.js";
+import Delete from "./components/Delete.js";
+
+
 
 function App() {
   return (
@@ -18,3 +21,4 @@ function App() {
 }
 
 export default App;
+
