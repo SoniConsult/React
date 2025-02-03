@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const [id, setId] = useState(""); 
+  const [id, setId] = useState<string>(""); 
   const navigate = useNavigate(); 
 
   const handleNavigation = () => {
     if (id.trim()) {
       navigate(`/get/${id}`); 
     } else {
-      alert("Enter valid id");
+      alert("Enter a valid ID");
     }
   };
 
@@ -17,10 +17,16 @@ export default function Home() {
     <div className="p-6 max-w-lg mx-auto">
       <h2 className="text-xl font-semibold mb-4">Fake Store</h2>
       <nav className="mb-6 flex space-x-4">
-        <button onClick={() => navigate("/post")} className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+        <button 
+          onClick={() => navigate("/post")} 
+          className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+        >
           Post Product
         </button>
-        <button onClick={() => navigate("/delete")} className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+        <button 
+          onClick={() => navigate("/delete")} 
+          className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+        >
           Delete Product
         </button>
       </nav>

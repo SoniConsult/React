@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 
+interface Product {
+  title: string;
+  price: string;
+  description: string;
+  category: string;
+  image: string | ArrayBuffer | null;
+}
+
 export default function Post() {
-  const [product, setProduct] = useState({
+  const [product, setProduct] = useState<Product>({
     title: "",
     price: "",
     description: "",
@@ -10,30 +18,32 @@ export default function Post() {
     image: "",
   });
 
-  const [preview, setPreview] = useState(null);
-  const handleChange = (e) => {
+  const [preview, setPreview] = useState<string | null>(null);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
+  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        setProduct({ ...product, image: reader.result });
-        setPreview(reader.result);
+        setProduct((prev) => ({ ...prev, image: reader.result }));
+        setPreview(reader.result as string);
       };
     }
   };
-  const handleSubmit = async (e) => {
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const url = "https://fakestoreapi.com/products";
 
     try {
       const response = await axios.post(url, product);
       console.log("Post successfully", response.data);
-      alert("success");
+      alert("Success");
     } catch (error) {
       console.error("Error", error);
     }
@@ -93,11 +103,20 @@ export default function Post() {
 
         <div>
           <label className="block font-medium">Upload Image</label>
-          <input type="file" accept="image/*" onChange={handleImageUpload} className="border p-2 rounded-md w-full" required />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="border p-2 rounded-md w-full"
+            required
+          />
           {preview && <img src={preview} alt="Preview" className="w-32 h-32 object-cover rounded-md mt-2" />}
         </div>
 
-        <button type="submit" className="mt-4 bg-green-500 text-white px-4 py-2 rounded-md w-full hover:bg-green-600">
+        <button
+          type="submit"
+          className="mt-4 bg-green-500 text-white px-4 py-2 rounded-md w-full hover:bg-green-600"
+        >
           Submit Product
         </button>
       </form>

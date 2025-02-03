@@ -1,9 +1,9 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home.js";
-import Get from "./components/Get.js";
-import Post from "./components/Post.js";
-import Delete from "./components/Delete.js";
+import Home from "./components/Home.tsx";
+import Get from "./components/Get.tsx";
+import Post from "./components/Post.tsx";
+import Delete from "./components/Delete.tsx";
 
 
 
