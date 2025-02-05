@@ -115,7 +115,7 @@ export default function Post() {
 
         <button
           type="submit"
-          className="mt-4 bg-green-500 text-white px-4 py-2 rounded-md w-full hover:bg-green-600"
+          className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-md w-full hover:bg-gray-600"
         >
           Submit Product
         </button>

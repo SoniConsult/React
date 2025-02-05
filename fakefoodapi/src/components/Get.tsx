@@ -22,21 +22,22 @@ export default function Get() {
   }, [id]);
 
   return (
-    <div className="p-6 max-w-lg mx-auto">
-      {product ? (
-        <div className="border rounded-lg shadow-lg p-4 flex flex-col items-center">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="w-32 h-32 object-contain"
-          />
-          <h3 className="text-lg font-semibold mt-2">{product.title}</h3>
-          <p className="text-sm text-gray-600 mt-1">{product.description}</p>
-          <p className="text-md font-semibold mt-2">${product.price}</p>
-        </div>
-      ) : (
-        <p className="text-center">Product not found</p>
-      )}
-    </div>
+    <div className="p-6 max-w-lg mx-auto bg-white rounded-lg shadow-xl">
+    {product ? (
+      <div className="border rounded-lg shadow-md p-6 flex flex-col items-center space-y-4">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-48 h-48 object-contain rounded-md shadow-sm"
+        />
+        <h3 className="text-2xl font-semibold text-gray-800">{product.title}</h3>
+        <p className="text-sm text-gray-600 text-center">{product.description}</p>
+        <p className="text-lg font-semibold text-gray-600">${product.price}</p>
+      </div>
+    ) : (
+      <p className="text-center text-gray-600 font-medium">Product not found</p>
+    )}
+  </div>
+  
   );
 }

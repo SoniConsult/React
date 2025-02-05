@@ -38,7 +38,7 @@ export default function Delete() {
 
       <button
         onClick={handleDelete}
-        className="mt-4 w-full bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+        className="mt-4 w-full bg-gray-500 text-gray px-4 py-2 rounded-md hover:bg-gray-600"
       >
         Delete Product
       </button>
